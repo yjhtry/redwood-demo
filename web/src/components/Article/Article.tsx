@@ -2,6 +2,7 @@ import type { Post } from 'types/graphql'
 
 import { Link, routes } from '@redwoodjs/router'
 
+import CommentForm from 'src/components/CommentForm'
 import CommentsCell from 'src/components/CommentsCell'
 
 interface Props {
@@ -26,7 +27,10 @@ const Article = ({ article, summary }: Props) => {
       </div>
       {!summary && (
         <div className="mt-12">
-          <CommentsCell />
+          <CommentForm postId={article.id} />
+          <div className="mt-12">
+            <CommentsCell postId={article.id} />
+          </div>
         </div>
       )}
     </article>

@@ -1,4 +1,5 @@
 import { Link, routes } from '@redwoodjs/router'
+import { Toaster } from '@redwoodjs/web/toast'
 
 import { useAuth } from 'src/auth'
 
@@ -11,6 +12,7 @@ const BlogLayout = ({ children }: BlogLayoutProps) => {
   console.log(currentUser)
   return (
     <>
+      <Toaster />
       <header className="flex justify-between border-b border-b-gray-300 py-2 pl-3 pr-8">
         <h1 className="text-base font-bold">
           <Link to={routes.home()}>Redwood Blog</Link>
