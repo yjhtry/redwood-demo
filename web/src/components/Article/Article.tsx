@@ -4,18 +4,24 @@ import { Link, routes } from '@redwoodjs/router'
 
 interface Props {
   article: Post
+  summary?: boolean
 }
 
-const Article = ({ article }: Props) => {
+function truncate(str: string, n: number) {
+  return str.length > n ? str.slice(0, n) + '...' : str
+}
+
+const Article = ({ article, summary }: Props) => {
   return (
     <article>
       <header>
-        <h2>
+        <h2 className="text-xl font-semibold text-blue-700">
           <Link to={routes.article({ id: article.id })}>{article.title}</Link>
         </h2>
       </header>
-      <div>{article.body}</div>
-      <div>Posted at: {article.createdAt}</div>
+      <div className="mt-2 font-light text-gray-900">
+        {summary ? truncate(article.body, 100) : article.body}
+      </div>
     </article>
   )
 }
