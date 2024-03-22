@@ -34,7 +34,7 @@ const Comment = ({ comment }: Props) => {
     ],
   })
 
-  const moderate = () => {
+  const onDelete = () => {
     if (confirm('Are you sure?')) {
       deleteComment({
         variables: { id: comment.id },
@@ -53,7 +53,7 @@ const Comment = ({ comment }: Props) => {
       {hasRole('moderator') && (
         <button
           type="button"
-          onClick={moderate}
+          onClick={onDelete}
           className="absolute bottom-2 right-2 rounded bg-red-500 px-2 py-1 text-xs text-white"
         >
           Delete

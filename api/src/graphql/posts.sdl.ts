@@ -3,6 +3,9 @@ export const schema = gql`
     id: Int!
     title: String!
     body: String!
+    comments: [Comment]!
+    user: User!
+    userId: Int!
     createdAt: DateTime!
   }
 
@@ -19,6 +22,7 @@ export const schema = gql`
   input UpdatePostInput {
     title: String
     body: String
+    userId: Int
   }
 
   type Mutation {
